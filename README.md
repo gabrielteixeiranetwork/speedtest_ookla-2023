@@ -66,4 +66,72 @@ Vamos baixar o Speedtest dentro do diretório /usr/local/src/ooklaserver
  Agora você já pode testar se o seu servidor está ON através do seguinte link: http://sub.dominio:8080
 ![image](https://user-images.githubusercontent.com/94009104/234422343-6e0aaaff-7d47-49ae-a680-aaaada1e6dd1.png)
 
+ Pare o serviço
+ 
+     ./ooklaserver.sh stop
+ Edite o arquivo de configuração Ookla
+ 
+     vim /usr/local/src/ooklaserver/OoklaServer.properties
+ Remova o # e ative o IPv6 (OBRIGATÓRIO) 
+ 
+     OoklaServer.useIPv6 = true
+ Descomente a linha e inclua o seu domínio
      
+     OoklaServer.allowedDomains = *.ookla.com, *.speedtest.net, *.seudominio.com.br
+ Sobreecreva OoklaServer.properties.default com o OoklaServer.properties
+ 
+     cp /usr/local/src/ooklaserver/OoklaServer.properties /usr/local/src/ooklaserver/OoklaServer.properties.default
+ Para que o ookla seja tratado como um serviço vamos editar o diretório vim /lib/systemd/system/ooklaserver.service
+     
+     [Unit]
+     Description=OoklaServer-SpeedTest 
+     After=network.target
+
+     [Service]
+     User=root
+     Group=root
+     Type=simple
+     RemainAfterExit=yes
+
+     WorkingDirectory=/usr/local/src/ooklaserver
+     ExecStart=/usr/local/src/ooklaserver/ooklaserver.sh start
+     ExecReload=/usr/local/src/ooklaserver/ooklaserver.sh restart
+     #ExecStop=/usr/local/src/ooklaserver/ooklaserver.sh stop
+     ExecStop=/usr/bin/killall -9 OoklaServer
+
+     TimeoutStartSec=60
+     TimeoutStopSec=300
+
+     [Install]
+     WantedBy=multi-user.target
+     Alias=speedtest.service
+ Recarregue o daemon
+     
+     systemctl daemon-reload
+ Vamos ativar o nosso serviço
+     
+     systemctl enable ooklaserver
+     systemctl start ooklaserver
+     systemctl status ooklaserver
+ Reinicie a máquina
+
+     reboot
+ Quando a máquina voltar, verifique se o serviço está UP
+ 
+     systemctl status ooklaserver
+ Vamos fazer um teste para ver se o seu servidor acesse o link https://www.ookla.com/pt/host-tester
+ ![image](https://user-images.githubusercontent.com/94009104/234431484-fb433fb8-befb-47fb-81ce-a707d03faffe.png)
+ Solução para isso é instalarmos o certificado SSL
+     
+     apt install certbot
+     certbot certonly --standalone
+ Email (null@gabrielteixeiraconsultoria.com.br ou null@remontti.com.br), Y, N, Seu subdominio e dominio do Speedtest
+ 
+ Edite o arquivo vim /usr/local/src/ooklaserver/OoklaServer.properties para usarmos o certificado gerado
+ 
+ Localize openSSL.server.certificateFile e openSSL.server.privateKeyFile
+
+# openSSL.server.certificateFile = cert.pem
+# openSSL.server.privateKeyFile = key.pem
+
+
