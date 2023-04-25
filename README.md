@@ -131,7 +131,7 @@ Vamos baixar o Speedtest dentro do diretório /usr/local/src/ooklaserver
  
  Localize openSSL.server.certificateFile e openSSL.server.privateKeyFile
 
-# openSSL.server.certificateFile = cert.pem
-# openSSL.server.privateKeyFile = key.pem
+ openSSL.server.certificateFile = cert.pem
+ openSSL.server.privateKeyFile = key.pem
 
 
