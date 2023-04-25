@@ -131,7 +131,20 @@ Vamos baixar o Speedtest dentro do diretório /usr/local/src/ooklaserver
  
  Localize openSSL.server.certificateFile e openSSL.server.privateKeyFile
 
- openSSL.server.certificateFile = cert.pem
- openSSL.server.privateKeyFile = key.pem
+     openSSL.server.certificateFile = cert.pem
+     openSSL.server.privateKeyFile = key.pem
+ Subistitua pelo seguinte:
+     
+     openSSL.server.certificateFile = /etc/letsencrypt/live/SUB.DOMINIO.XXX.XX/fullchain.pem
+     openSSL.server.privateKeyFile = /etc/letsencrypt/live/SUB.DOMINIO.XXX.XX/privkey.pem
+ Sobreecreva OoklaServer.properties.default com o OoklaServer.properties
+ 
+     cp /usr/local/src/ooklaserver/OoklaServer.properties /usr/local/src/ooklaserver/OoklaServer.properties.default
+ Reinicie o ookla (pode demorar)
+ 
+     systemctl  restart ooklaserver.service
+ ![image](https://user-images.githubusercontent.com/94009104/234432767-e7e12751-43d7-4d9e-9f97-9a98703a0329.png)
 
+
+ 
 
