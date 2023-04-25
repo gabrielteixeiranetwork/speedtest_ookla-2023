@@ -2,5 +2,5 @@
 
 Pacotes essenciais
 
-      su -
-      apt install vim wget unzip net-tools psmisc
+     su -
+     apt install vim wget unzip net-tools psmisc
