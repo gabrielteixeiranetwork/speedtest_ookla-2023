@@ -43,4 +43,26 @@ Carregue
 
      sysctl -p
      
+Módulos do Kernel
+     
+     modprobe -a tcp_illinois
+     echo "tcp_illinois" >> /etc/modules
+     modprobe -a tcp_westwood
+     echo "tcp_westwood" >> /etc/modules
+     modprobe -a tcp_htcp
+     echo "tcp_htcp" >> /etc/modules
+
+Vamos criar o diretório /usr/local/src/ooklaserver
+
+     mkdir /usr/local/src/ooklaserver  
+Vamos baixar o Speedtest dentro do diretório /usr/local/src/ooklaserver
+
+     cd /usr/local/src/ooklaserver
+     wget https://install.speedtest.net/ooklaserver/ooklaserver.sh
+     chmod +x ooklaserver.sh
+     ./ooklaserver.sh install
+Confirme com Y
+Agora você já pode testar se o seu servidor está ON através do seguinte link: http://sub.dominio:8080
+![image](https://user-images.githubusercontent.com/94009104/234422343-6e0aaaff-7d47-49ae-a680-aaaada1e6dd1.png)
+
      
