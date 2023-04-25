@@ -61,7 +61,7 @@ Vamos baixar o Speedtest dentro do diretório /usr/local/src/ooklaserver
      wget https://install.speedtest.net/ooklaserver/ooklaserver.sh
      chmod +x ooklaserver.sh
      ./ooklaserver.sh install
-Confirme com Y
+Confirme com Y;
 Agora você já pode testar se o seu servidor está ON através do seguinte link: http://sub.dominio:8080
 ![image](https://user-images.githubusercontent.com/94009104/234422343-6e0aaaff-7d47-49ae-a680-aaaada1e6dd1.png)
 
