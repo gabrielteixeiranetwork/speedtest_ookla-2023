@@ -144,6 +144,29 @@ Vamos baixar o Speedtest dentro do diretório /usr/local/src/ooklaserver
  
      systemctl  restart ooklaserver.service
  ![image](https://user-images.githubusercontent.com/94009104/234432767-e7e12751-43d7-4d9e-9f97-9a98703a0329.png)
+ #Renovar Certificado automaticamente todo dia primeiro
+ 
+ Abra a pasta vim /usr/local/src/ooklaserver/renova-certificado
+ 
+     #!/bin/bash
+     # Renova o certificado
+     /usr/bin/certbot renew -q
+     # Aguarda o certificado renovar
+     sleep 30
+     # Reinicie o OoklaServer
+     /usr/bin/systemctl restart ooklaserver
+ De permissão para execução e adicione ao cron, para que ele rode o script toda a meia noite do dia 1º de cada mês
+ 
+     chmod +x /usr/local/src/ooklaserver/renova-certificado
+     echo '00 00   1 * *   root    /usr/local/src/ooklaserver/renova-certificado' >> /etc/crontab
+ Verifique se a última linha está nosso script
+ 
+     cat /etc/crontab
+ Reinicie o cron para ele carregar a nova rotina.
+
+     systemctl restart cron
+ 
+
 
 
  
