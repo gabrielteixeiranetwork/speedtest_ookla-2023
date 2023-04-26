@@ -8,6 +8,7 @@ Requisitos de hardware:
      
  Requisitos para cadastro:
      
+     Dominio
      Site
      Email Cooportativo
      IPv4 & IPv6
