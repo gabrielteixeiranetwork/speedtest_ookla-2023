@@ -1,5 +1,16 @@
 # speedtest_ookla
 
+Requisitos de hardware:
+     8GB de Ram
+     50GB de HD
+     Placa de rede 1GB
+     
+ Requisitos para cadastro:
+      Site
+      Email Cooportativo
+      IPv4 & IPv6
+      
+
 Pacotes essenciais
 
      su -
