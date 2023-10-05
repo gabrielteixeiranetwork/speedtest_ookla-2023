@@ -180,7 +180,9 @@ Vamos baixar o Speedtest dentro do diretório /usr/local/src/ooklaserver
 
      systemctl restart cron
  
+Faça uma doação para incentivar os tutoriais:
 
+     56766764-8f9e-4dec-b998-52887b0043a9
 
 
  
